@@ -105,7 +105,7 @@ export default function expandedEndpointTemplate() {
   if (!this.resolvedSpec) { return ''; }
   return html`
   ${this.resolvedSpec.tags.map((tag) => html`
-    <section id="${tag.elementId}" part="section-tag" class="regular-font section-gap--read-mode observe-me" style="border-top:1px solid var(--primary-color);">
+    <section id="${tag.elementId}" part="section-tag" class="${tag.elementId} regular-font section-gap--read-mode observe-me" style="border-top:1px solid var(--primary-color);">
       <div class="title tag" part="label-tag-title">${tag.name}</div>
       <slot name="${tag.elementId}"></slot>
       <div class="regular-font-size">
@@ -117,7 +117,7 @@ export default function expandedEndpointTemplate() {
       }
       </div>
     </section>
-    <section class='regular-font section-gap--read-mode' part="section-operations-in-tag">
+    <section class='${tag.elementId} regular-font section-gap--read-mode' part="section-operations-in-tag">
       ${tag.paths.map((path) => expandedEndpointBodyTemplate.call(this, path, 'BBB'))}
     </section>
     `)

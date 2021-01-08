@@ -129,7 +129,7 @@ export default function navbarTemplate() {
       ${this.resolvedSpec.tags
         .filter((tag) => tag.paths.filter((path) => pathIsInSearch(this.matchPaths, path)).length)
         .map((tag) => html`
-          <div class='nav-bar-tag-and-paths ${tag.expanded ? 'expanded' : 'collapsed'}'>
+          <div class='nav-bar-tag-and-paths ${tag.elementId} ${tag.expanded ? 'expanded' : 'collapsed'}'>
             ${tag.name === 'General ⦂'
               ? html`<hr style="border:none; border-top: 1px dotted var(--nav-text-color); opacity:0.4; margin-top:-1px;"/>`
               : html`
@@ -161,7 +161,7 @@ export default function navbarTemplate() {
                 ${this.renderStyle === 'focused' && this.onNavTagClick === 'expand-collapse'
                   ? ''
                   : html`
-                    <div class='tag-headers'>
+                    <div class='tag-headers ${tag.elementId}'>
                       ${tag.headers.map((header) => html`
                       <div 
                         class='nav-bar-h${header.depth}' 
